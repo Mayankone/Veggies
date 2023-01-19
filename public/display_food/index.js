@@ -22,6 +22,6 @@ const getData = async () => {
     })
 }
 
-getData()
+getData() // Make sure to call function
     
     
