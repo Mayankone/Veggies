@@ -60,7 +60,6 @@ app.get('/get_food_data', async (req, res) => {
 
 app.get('/get_single/:veggie', async (req, res) => {
     let veggie = req.params.veggie;
-    console.log(veggie);
     let response = await myVeggie.findOne({name: veggie});
     res.json(response);
 })
