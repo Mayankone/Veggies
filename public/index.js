@@ -32,7 +32,7 @@ submitButton.addEventListener('click', async () => {
 
 
 
- fetch('http://localhost:5000/create_veggie', {
+ let response = await fetch('http://localhost:5000/create_veggie', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -41,6 +41,20 @@ submitButton.addEventListener('click', async () => {
         body: JSON.stringify(veggie)
 
     })
+
+    let uploadStatusTag = document.getElementById("upload-status");
+    if(response.status == 200){
+        console.log(response);
+        console.log("Upload complete");
+        uploadStatusTag.textContent = "Upload Completed!"
+        uploadStatusTag.style.color = "green";
+    }
+    else{
+        console.log(response);
+        console.log("Upload failed");
+        uploadStatusTag.textContent = "Upload failed!"
+        uploadStatusTag.style.color = "red";
+    }
     
     }) 
    
