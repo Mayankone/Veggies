@@ -57,4 +57,34 @@ submitButton.addEventListener('click', async () => {
     }
     
     }) 
-   
+
+let deleteButton = document.getElementById("delete");
+
+deleteButton.addEventListener("click", async () => {
+    let response = await fetch("http://localhost:5000/delete_nameless_data", {
+        method: "delete",
+    })
+    console.log(response);
+})
+
+let displayPageButton = document.getElementById("display-page-button");
+
+displayPageButton.addEventListener("click", async () => {
+    // Change HTML files (from index to display_flood.html)
+    window.location.href = "./display_food"
+})
+
+let findVeggieButton = document.getElementById("Submit");
+
+findVeggieButton.addEventListener("click", async () => {
+    let findVeggieString = document.getElementById("find-veggie").value;
+    let data = await fetch(`http://localhost:5000/get_single/${findVeggieString}`);
+    data.json().then((parsedData) => {
+        console.log(parsedData); // array of objects
+        let pTag = document.createElement("p"); // Making a new p tag for each element
+        pTag.textContent = parsedData.name;
+        //Attach p tag to dom
+        let divElement = document.getElementById("FIND");
+        divElement.appendChild(pTag);
+        })
+    }) 

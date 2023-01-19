@@ -44,7 +44,26 @@ app.post('/create_veggie', async (req, res) => {
     res.send(returnedValue);
 }) 
 
+app.delete("/delete_nameless_data", async (req, res) => {
+    let deletedItemsArray = await myVeggie.deleteMany({name: ""});
 
+    console.log(deletedItemsArray);
+
+    res.send(`deleted ${deletedItemsArray.deletedCount} items`)
+})
+
+app.get('/get_food_data', async (req, res) => {
+    let response = await myVeggie.find({});
+    console.log(response);
+    res.json(response);
+})
+
+app.get('/get_single/:veggie', async (req, res) => {
+    let veggie = req.params.veggie;
+    console.log(veggie);
+    let response = await myVeggie.findOne({name: veggie});
+    res.json(response);
+})
 
 app.listen(5000, () => {
     console.log("Server is listening on 5000");

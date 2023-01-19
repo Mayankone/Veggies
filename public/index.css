@@ -8,3 +8,18 @@
 .input-container{
     margin: 12px;
 }
+
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    color: violet;
+}
+
+#navbar h1{
+    background-color: lightcyan;
+}
+
+#FIND{
+    position: relative;
+    top: 100px;   
+}
